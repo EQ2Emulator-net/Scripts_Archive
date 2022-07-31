@@ -54,5 +54,6 @@ function InRangeRotweed(Zone, Spawn)
 			SpawnMob(Zone, 1950203, 0, 932.211, 11.7112, -176.419, 280.156)
 			SpawnMob(Zone, 1950203, 0, 932.211, 11.7721, -167.759, 280.656)
 			SpawnMob(Zone, 1950203, 0, 939.711, 12.075, -172.089, 280.484)
+		end
 	end
 end

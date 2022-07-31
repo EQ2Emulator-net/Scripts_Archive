@@ -1,47 +1,23 @@
 --[[
-	Script Name	: dd_debuff.lua
-	Script Purpose	: Generic damage + 1 effect script
-	Script Author	: John Adams
-	Script Date	: 2008.12.04
-	Script Notes	: Parameter 4 and 5 are the debuff type and value (param 6 if value is a range)
+	Script Name	: Puncture.lua
+	Script Purpose	: Brigand Direct Damage + Debuff
+	Script Author	: Zcoretri
+	Script Date	: 23.May.2010
+	Script Notes	: 
 --]]
 
-function cast(Caster, Target, DDType, MinDDVal, MaxDDVal, DebuffType, MinDebuffVal, MaxDebuffVal)
-
-	-- Debuff component
-	-- Determine if there is a range to effect values
-	if MaxDebuffVal ~= nil and MinDebuffVal < MaxDebuffVal then
-		-- JA: for debuff randoms (if any), need to to math.random with precision - I think this function rounds up?
-		DebuffValue = math.random(MinDebuffVal, MaxDebuffVal)
-	else
-		DebuffValue = MinDebuffVal
-	end
-
-	-- Determine DebuffType - either a DamageType or a String value passed as param 4
-	if DebuffType == "Attack" then
-		-- ModifyAttackSpeed(Target, -DebuffValue)
-	elseif DebuffType == "DPS" then
-		-- ModifyDPS(Target, -DebuffValue)
-	elseif DebuffType == "Disease" then
-		-- ModifyDisease(Target, -DebuffValue)
-	elseif DebuffType == "Power" then
-		ModifyPower(Target, -DebuffValue)
-        elseif DebuffType == "Knockback" then
-                SpawnSet(Target, "visual_state", "10900")
-	end
-
-	-- DD component (instant damage)
-	if MaxDDVal ~= nil and MinDDVal < MaxDDVal then
-		SpellDamage(Target, DDType, math.random(MinDDVal, MaxDDVal))
-	else
-		SpellDamage(Target, DDType, MinDDVal)
-	end
+function cast(Caster, Target, DmgType, MinDmg, MaxDmg, AttackSpeed)
+    -- DD component (instant damage)
+    if MaxDmg ~= nil and MinDmg < MaxDmg then
+        dmgAmount = math.random(MinDmg, MaxDmg)
+	SpellDamage(Target, DmgType, dmgAmount)
+    else
+	SpellDamage(Target, DmgType, MinDmg)
+    end
+    -- Debuff component
+    AddSpellBonus(Target, 612, AttackSpeed)
 end
 
-function tick(Caster, Target, DDType, MinDDVal, MaxDDVal, DebuffType, MinDebuffVal, MaxDebuffVal)
-
-end
-
-function remove(Caster, Target, DDType, MinDDVal, MaxDDVal, DebuffType, MinDebuffVal, MaxDebuffVal)
-
+function remove(Caster, Target, DmgType, MinDmg, MaxDmg, AttackSpeed)
+    RemoveSpellBonus(Target)
 end

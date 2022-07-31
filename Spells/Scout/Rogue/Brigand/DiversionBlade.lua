@@ -1,30 +1,17 @@
 --[[
-	Script Name	: dd_interrupt.lua
-	Script Purpose	: Generic damage + stun script
-	Script Author	: John Adams
-	Script Date	: 2008.12.04
+	Script Name	: BumRush.lua
+	Script Purpose	: Brigand Direct Damage + Interrupt
+	Script Author	: Zcoretri
+	Script Date	: 17.April.2010
 --]]
 
-function cast(Caster, Target, DDType, MinDDVal, MaxDDVal, EffectType, EffectChance)
-
-	-- DD component
-	if MaxDDVal ~= nil and MinDDVal < MaxDDVal then
-		SpellDamage(Target, DDType, math.random(MinDDVal, MaxDDVal))
-	else
-		SpellDamage(Target, DDType, MinDDVal)
-	end
-
-	-- Effect component - if EffectChance is blank, always apply the effect, otherwise random
-	if EffectChance ~= nil then 
-		if EffectChance >= math.random(1, 100) then
-			-- Interrupt(Target)
-		end
-	else
-		-- Interrupt(Target)
-	end
-
-
-end
-
-function remove(Caster, Target)
+function cast(Caster, Target, DmgType, MinDmg, MaxDmg)
+    -- Add check for Caster is flanking or behind Target
+    if MaxDmg ~= nil and MinDmg < MaxDmg then
+        dmgAmount = math.random(MinDmg, MaxDmg)
+	SpellDamage(Target, DmgType, dmgAmount)
+    else
+	SpellDamage(Target, DmgType, MinDmg)
+    end
+    --Interrupt(Target)
 end

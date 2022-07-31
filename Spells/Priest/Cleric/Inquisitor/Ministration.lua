@@ -1,18 +1,14 @@
 --[[
-	Script Name	: Heal (Spell Type)
-	Script Purpose	: Generic script for healing spells
-	Script Author	: John Adams
-	Script Date	: 2008.12.03
-	Script Note	: 
+	Script Name	: Ministration.lua
+	Script Purpose	: Inquisitor small direct heal
+	Script Author	: Zcoretri
+	Script Date	: 23.May.2010
+	Script Notes	: 
 --]]
 
-function cast(Caster, Target, HealType, HealMinVal, HealMaxVal)
+function cast(Caster, Target, MinHeal, MaxHeal)
 
-	-- Heal Component
-	if HealMinVal < HealMaxVal then
-		ModifyHP(Caster, math.random(HealMinVal, HealMaxVal))
-	else
-		ModifyHP(Caster, HealMinVal)
-	end
+    healAmount = math.random(MinHeal, MaxHeal)
+    ModifyHP(Caster, healAmount)
 
 end

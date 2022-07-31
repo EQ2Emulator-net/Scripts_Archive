@@ -22,19 +22,19 @@ function respawn(NPC)
 end
 
 function casted_on(Target, Caster, SpellName)
-	if HasQuest(Caster, BARBARIAN_MENTOR_QUEST_2) and GetQuestStep(Caster, BARBARIAN_MENTOR_QUEST_2) == 4 and SpellName == \"Inspect\" then
+	if HasQuest(Caster, BARBARIAN_MENTOR_QUEST_2) and GetQuestStep(Caster, BARBARIAN_MENTOR_QUEST_2) == 4 and SpellName == "Inspect" then
 		AddStepProgress(Caster, BARBARIAN_MENTOR_QUEST_2, 4, 1)
-		SendMessage(Caster, \"This crate is not from shipment CG4QC.\")
-		SendPopUpMessage(Caster, \"This crate is not from shipment CG4QC.\", 255, 255, 255)
-		SpawnSet(Target, \"show_command_icon\", 0)
-		AddTimer(Target, 60000, \"ResetBarrel\")
-	elseif HasQuest(Caster, DWARF_MENTOR_QUEST_3) and GetQuestStep(Caster, DWARF_MENTOR_QUEST_3) == 2 and SpellName == \"Inspect\" then
+		SendMessage(Caster, "This crate is not from shipment CG4QC.")
+		SendPopUpMessage(Caster, "This crate is not from shipment CG4QC.", 255, 255, 255)
+		SpawnSet(Target, "show_command_icon", 0)
+		AddTimer(Target, 60000, "ResetBarrel")
+	elseif HasQuest(Caster, DWARF_MENTOR_QUEST_3) and GetQuestStep(Caster, DWARF_MENTOR_QUEST_3) == 2 and SpellName == "Inspect" then
 		conversation = CreateConversation()
-		AddConversationOption(conversation, \"Stop inspecting.\")
-		StartDialogConversation(conversation, 1, Target, Caster, \"A quick search doesn\'t turn up any packages meant for Mav Boilfist, perhaps you should check some of the other crates and barrels.\")
+		AddConversationOption(conversation, "Stop inspecting.")
+		StartDialogConversation(conversation, 1, Target, Caster, "A quick search doesn't turn up any packages meant for Mav Boilfist, perhaps you should check some of the other crates and barrels.")
 	end
 end
 
 function ResetBarrel(NPC)
-	SpawnSet(NPC, \"show_command_icon\", 1)
+	SpawnSet(NPC, "show_command_icon", 1)
 end
