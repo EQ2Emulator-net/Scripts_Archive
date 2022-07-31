@@ -1,0 +1,72 @@
+The following LUA functions are used in creating/using Quests:
+Note that the first parameter is ALWAYS Quest.  See KillCrabs.lua for a working example of these functions.
+
+
+REQUIRED FUNCTIONS (placed in an init() function):
+
+RegisterQuest(Quest, Quest Name, Quest Type, Quest Zone, Quest level, Description)
+
+
+
+
+
+
+
+Optional Functions (mainly used in init() function):
+
+SetQuestPrereqLevel(Quest, Level) 
+NOTE: Level required to be given the quest
+		
+AddQuestPrereqQuest(Quest, Quest ID) 
+NOTE: Quest that must be completed before this quest can be given
+
+AddQuestPrereqItem(Quest, Item ID, Quantity)
+NOTE: Quantity is optional and defaults to 1
+Item that the player must have to get the quest
+
+AddQuestPrereqFaction(Quest, Faction ID, Faction Amount Lower, Faction Amount Upper) 
+NOTE: not currently used but here for when it is completed
+Quest is offered when the character's faction is between the Faction Amount Lower and Faction Amount Upper (if Faction Amount Upper is used, otherwise faction is >= Faction Amount Lower)
+
+AddQuestRewardItem(Quest, Item ID, Quantity)
+NOTE: Quantity is optional and defaults to 1
+	
+AddQuestRewardCoin(Quest, Copper, Silver, Gold, Plat) 
+NOTE: all parameters but copper are optional
+
+AddQuestRewardFaction(Quest, Faction ID, Amount) 
+NOTE: not currently used but here for when it is completed
+
+SetQuestRewardStatus(Quest, Amount) 
+NOTE: not currently used but here for when it is completed
+
+SetQuestRewardComment(Quest, Text)
+
+SetQuestRewardExp(Quest, Amount)
+
+AddQuestStepKill(Quest, Step ID, Description, Quantity, Percentage, TaskGroupText, NPC ID(s)) 
+NOTE: ID is a unique number that you want to use for this step.  It is used later to track player progress. Each quest can use whichever IDs you want as long as the ID is not repeated in the same quest.
+TaskGroupText is optional, but if used this Quest Step will be a bullet underneath the TaskGroup created with the TaskGroupText.  
+If you dont want to use TaskGroupText use an empty string in the field (ie "")
+You can have multiple bullets under the same TaskGroup by using the same TaskGroupText in multiple addQuestStepKill function calls.
+
+AddQuestStepChat(Quest, Step ID, Description, TaskGroupText, NPC ID(s)) 
+	
+AddQuestStepObtainItem(Quest, Step ID, Description, Quantity, Percentage, TaskGroupText, Item ID(s))
+
+AddQuestStepLocation(Quest, Step ID, Description, X, Y, Z, MaxVariation, TaskGroupText)
+NOTE: MaxVariation is the distance the player can be from the location and still get credit
+
+AddQuestStepCompleteAction(Quest, Step ID, Function Name)
+NOTE: LUA Function that is called when this step is completed.
+
+SetCompletedDescription(Quest, Description)
+NOTE: Description that is used after a quest has been completed.
+
+UpdateQuestStepDescription(Quest, Step ID, Description)
+
+function Accepted(Quest, QuestGiver, Player)
+NOTE: This function is called when a player accepts the quest
+
+function Declined(Quest, QuestGiver, Player)
+NOTE: This function is called when a player declines the quest
