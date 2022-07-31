@@ -1,35 +1,20 @@
 --[[
-	Script Name	: stealth.lua
-	Script Purpose	: Generic Stealth spells (with params)
-	Script Author	: John Adams
-	Script Date	: 2008.12.05
-	Script Notes	: Using most common BOOL params -
-			: Stealth to caster: 0, target 1
-			: Suspend movement: 1 = true
-			: See invis/stealth: 1 = true
+    Script Name    : Spells/Scout/Rogue/Sneak.lua
+    Script Author  : Jabantiz
+    Script Date    : 2013.12.16 01:12:19
+    Script Purpose : 
+                   : 
 --]]
 
-function cast(Caster, Target, StealthType, DispelSpeed, SeeStealth)
+-- Info from spell_display_effects (remove from script when done)
+-- Grants stealth to caster
+-- Suspends caster's movement speed enhancements
+-- Grants See Stealth to caster
 
-	if StealthType == 1 then
-		-- CastStealth(Target)
-	else
-		-- CastSteatlh(Caster)
-	end
-
-	if DispelSpeed == 1 then
-		-- newSpeed = whatever the players normal speed is without buffs
-		-- ModifySpeed(Caster, newSpeed)
-	end
-
-	if SeeStealth == 1 then
-		-- buff player with see invis/stealth buff
-	end
-
+function cast(Caster, Target)
+    Stealth(Target, 1)
 end
 
 function remove(Caster, Target)
-
-	-- return players enhanced speed
 
 end

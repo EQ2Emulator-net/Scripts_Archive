@@ -1,47 +1,29 @@
 --[[
-	Script Name	: Heal / Buff (Spell Type)
-	Script Purpose	: Generic script for Heal / Buff spells
-	Script Author	: John Adams
-	Script Date	: 2008.12.04
+    Script Name    : Spells/Priest/Shaman/Mystic/Rejuvenation.lua
+    Script Author  : John Adams
+    Script Date    : 2013.11.19 08:11:16
+    Script Purpose : 
+                   : 
 --]]
 
-function cast(Caster, Target, HealType, HealMinVal, HealMaxVal, BuffType, BuffMinVal, BuffMaxVal)
+function cast(Caster, Target, BuffAmt, MinHealAmt, MaxHealAmt)
 
-	-- Heal component
-	if HealMinVal < HealMaxVal then
-		ModifyHP(Caster, math.random(HealMinVal, HealMaxVal))
-	else
-		ModifyHP(Caster, HealMinVal)
-	end
+    -- Buff component (health)
+    AddSpellBonus(Target, 606, BuffAmt) 
 
-	-- Buff component
-	if BuffType ~= nil then
-
-		if BuffType == "Health" then
-
-			--SetMaxHP(Caster, GetMaxHP(Target) + BuffMinVal)
-                       AddSpellBonus(Target, 500, BuffMinVal)
-
-		end
-
-		-- do other buff types here
-
-	end
+    -- Heal component
+    if MaxHeal ~= nil and MinHeal < MaxHeal then
+      healAmount = math.random(MinHeal, MaxHeal)
+      ModifyHP(Target, healAmount)
+    else
+      ModifyHP(Target, MinHealAmt)
+    end
 
 end
 
-function tick(Caster, Target, HealType, HealMinVal, HealMaxVal, BuffType, BuffMinVal, BuffMaxVal)
+function remove(Caster, Target, BuffAmt, MinHealAmt, MaxHealAmt)
+    
+    -- Remove buff (health)
+    RemoveSpellBonus(Target) 
 
-	if BuffType == "Health" then
-
-		SetMaxHP(Caster, GetMaxHP(Target) + BuffMinVal)
-
-	end
-
-	-- do other buff types here
-
-end
-
-function remove(Caster, Target, HealType, HealMinVal, HealMaxVal, BuffType, BuffMinVal, BuffMaxVal)
-    RemoveSpellBonus(Target)
 end

@@ -1,55 +1,22 @@
 --[[
-	Script Name	: dd_dot.lua
-	Script Purpose	: Generic damage + 1 effect script
-	Script Author	: John Adams
-	Script Date	: 2008.12.02
+    Script Name    : Spells/Fighter/Brawler/Bruiser/Pummel.lua
+    Script Author  : John Adams
+    Script Date    : 2013.11.17 07:11:55
+    Script Purpose : Direct Damage script
+                   : 
 --]]
 
-function cast(Caster, Target, DDType, MinDDVal, MaxDDVal, EffectType, DamageType, MinEffectVal, MaxEffectVal)
+function cast(Caster, Target, DDType, MinDmg, MaxDmg)
 
-	-- DD component
-	if MaxDDVal ~= nil and MinDDVal < MaxDDVal then
-                dmgAmount = math.random(MinDDVal, MaxDDVal)
-		SpellDamage(Target, DDType, dmgAmount)
-                --AddHate(Caster, Target, dmgAmount)
-	else
-		SpellDamage(Target, DDType, MinDDVal)
-                --AddHate(Caster, Target, MinDDVal)
-	end
-
-	-- Effect component - only process this code if there is an EffectType param
-	if EffectType ~= nil then
-
-		-- Determine if there is a range to effect values
-		if MaxEffectVal ~= nil and MinEffectVal < MaxEffectVal then
-			EffectValue = math.random(MinEffectVal, MaxEffectVal)
-		else
-			EffectValue = MinEffectVal
-		end
-
-		-- Determine EffectType - either a DamageType or a String value passed as param 4
-		if EffectType == "heal" then
-			ModifyHP(Caster, EffectValue)
-		else
-			SpellDamage(Target, DamageType, EffectValue)
-		end
-
-	end
+        if MaxDmg ~= nil and MinDmg < MaxDmg then
+                dmgAmount = math.random(MinDmg, MaxDmg)
+                SpellDamage(Target, DDType, dmgAmount)
+        else
+                SpellDamage(Target, DDType, MinDmg)
+        end
 
 end
 
-function tick(Caster, Target, DDType, MinDDVal, MaxDDVal, EffectType, DamageType, MinEffectVal, MaxEffectVal)
-
-	if MaxEffectVal ~= nil and MinEffectVal < MaxEffectVal then
-		EffectValue = math.random(MinEffectVal, MaxEffectVal)
-	else
-		EffectValue = MinEffectVal
-	end
-
-	if EffectType == "heal" then
-		ModifyHP(Caster, EffectValue)
-	else
-		SpellDamage(Target, DamageType, EffectValue)
-	end
+function remove(Caster, Target, DDType, MinDmg, MaxDmg)
 
 end

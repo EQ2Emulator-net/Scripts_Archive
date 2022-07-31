@@ -6,7 +6,15 @@
 	Script Notes    :
 --]]
 
+function hailed(NPC, Spawn)
+    FaceTarget(NPC, Spawn)
+end
+
 function spawn(NPC)
+    MovementChoice(NPC)
+end
+
+function MovementChoice(NPC)
 	local choice = math.random(1, 4)
 	if choice == 1 then
 		clockwise1(NPC)

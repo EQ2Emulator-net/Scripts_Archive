@@ -1,24 +1,16 @@
 --[[
-        Script Name     : dd.lua
-        Script Purpose  : Generic direct damage script
+        Script Name     : Spells/Mage/Sorcerer/Warlock/Dissolve.lua
         Script Author   : John Adams
-        Script Date     : 2010.01.14
+        Script Date     : 2013.11.19
+        Script Purpose  : 
 --]]
 
 function cast(Caster, Target, DDType, MinDDVal, MaxDDVal)
 
         if MaxDDVal ~= nil and MinDDVal < MaxDDVal then
-                dmgAmount = math.random(MinDDVal, MaxDDVal)
-                SpellDamage(Target, DDType, dmgAmount)
-                --AddHate(Caster, Target, dmgAmount)
+                SpellDamage(Target, DDType, math.random(MinDDVal, MaxDDVal))
         else
                 SpellDamage(Target, DDType, MinDDVal)
-                --AddHate(Caster, Target, MinDDVal)
         end
 
 end
-
-function remove(Caster, Target, DDType, MinDDVal, MaxDDVal)
-
-end
-

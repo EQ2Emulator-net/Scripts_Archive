@@ -1,8 +1,8 @@
 --[[
 	Script Name	: Spells/Commoner/BetaGriffon.lua
-	Script Author	: John
+	Script Author	: John Adams
 	Script Date	: 2010.03.31 05:03:52
-	Script Notes	: Enter special notes here
+	Script Notes	: 
 			:
 --]]
 

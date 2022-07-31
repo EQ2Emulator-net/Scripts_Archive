@@ -1,23 +1,22 @@
 --[[
-	Script Name	: Puncture.lua
-	Script Purpose	: Brigand Direct Damage + Debuff
-	Script Author	: Zcoretri
-	Script Date	: 23.May.2010
-	Script Notes	: 
+    Script Name    : Spells/Scout/Rogue/Brigand/Puncture.lua
+    Script Author  : John Adams
+    Script Date    : 2013.11.20 07:11:10
+    Script Purpose : 
+                   : 
 --]]
 
-function cast(Caster, Target, DmgType, MinDmg, MaxDmg, AttackSpeed)
-    -- DD component (instant damage)
-    if MaxDmg ~= nil and MinDmg < MaxDmg then
-        dmgAmount = math.random(MinDmg, MaxDmg)
-	SpellDamage(Target, DmgType, dmgAmount)
+function cast(Caster, Target, DmgType, MinVal, MaxVal, AttackSpeed)
+    if MaxVal ~= nil and MinVal < MaxVal then
+        SpellDamage(Target, DmgType, math.random(MinVal, MaxVal))
     else
-	SpellDamage(Target, DmgType, MinDmg)
+        SpellDamage(Target, DmgType, MinVal)
     end
-    -- Debuff component
+
     AddSpellBonus(Target, 612, AttackSpeed)
 end
 
-function remove(Caster, Target, DmgType, MinDmg, MaxDmg, AttackSpeed)
+function remove(Caster, Target)
     RemoveSpellBonus(Target)
 end
+

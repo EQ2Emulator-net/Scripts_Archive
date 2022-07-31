@@ -1,5 +1,5 @@
 --[[
-	Script Name	: dd_dot.lua
+	Script Name	: Spells/Commoner/BetaDamage.lua
 	Script Purpose	: Generic damage + 1 effect script
 	Script Author	: John Adams
 	Script Date	: 2008.12.02

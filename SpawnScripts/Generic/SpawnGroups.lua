@@ -22,5 +22,5 @@ function LeaveRange(NPC, Spawn)
 end
 
 function hailed(NPC, Spawn)
-
+	Say(NPC, "Don't delete me! I'm part of a Spawn Group! ID: " .. GetSpawnGroupID(NPC))
 end

@@ -1,14 +1,14 @@
 --[[
-	Script Name	: <script-name>
-	Script Purpose	: <purpose>
-	Script Author	: <author-name>
-	Script Date	: <date>
-	Script Notes	: <special-instructions>
+	Script Name		: SpawnScripts/TimorousDeep/aChrykoriguard_patroller2.lua
+	Script Purpose	: Roaming guards
+	Script Author	: Scatman
+	Script Date		: 2008-09-01
+	Script Notes	: 
 --]]
 
 function spawn(NPC)
-	MovementLoopAddLocation(NPC, -402.93, 1.80, -0.26, 3, 0)
-	MovementLoopAddLocation(NPC, -447.74, 1.80, -0.42, 3, 0)
+	MovementLoopAddLocation(NPC, -402.93, 1.80, -0.26, 2, 0)
+	MovementLoopAddLocation(NPC, -447.74, 1.80, -0.42, 2, 0)
 end
 
 function hailed(NPC, Spawn)

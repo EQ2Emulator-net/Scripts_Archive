@@ -1,25 +1,14 @@
 --[[
-	Script Name	: Mesmerize
-	Script Purpose	: Generic Mesmerise spells with params
+	Script Name	: Spells/Mage/Enchanter/Illusionist/Entrance.lua
 	Script Author	: John Adams
-	Script Date	: 2008.12.05
-	Script Notes	: Not completely sure if mezz is handled by LUA or in code...
-			: Using the most common BOOL params: Immune to AOE, Dispel on damaged, Epic target immunity
-
+	Script Date	: 2013.11.19
+	Script Purpose	: 
 --]]
 
-function cast(Caster, Target, PreventAOE, DispelOnDamage, EpicImmune)
-
-	-- Make NPC immune to AOE, unless the target of AOE
-	-- Set flag if NPC takes damage, dispel Mezz
-	-- If target is Epic mob, immune to Mezz? See effect info for mezz spells - seems different for a few
-
-end
-
-function tick(Caster, Target, Type, Min, Max)
-	-- code to process each call_frequency (tick) set in spell_tiers
+function cast(Caster, Target)
+    AddControlEffect(Target, 1)
 end
 
 function remove(Caster, Target)
-	-- code to remove the spell
+    RemoveControlEffect(Target, 1)
 end

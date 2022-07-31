@@ -1,42 +1,20 @@
 --[[
-	Script Name	: dd_snare.lua
-	Script Purpose	: Generic damage + Snare effect script
-	Script Author	: John Adams
-	Script Date	: 2008.12.04
+    Script Name    : Spells/Priest/Shaman/Mystic/VeliumWinds.lua
+    Script Author  : John Adams
+    Script Date    : 2013.11.19 09:11:17
+    Script Purpose : 
+                   : 
 --]]
 
-function cast(Caster, Target, DDType, MinDDVal, MaxDDVal, SnareAmount, DispelChance)
+function cast(Caster, Target, DmgType, MinDmgVal, MaxDmgVal, SpellID)
 
-	-- DD component
-	if MaxDDVal ~= nil and MinDDVal < MaxDDVal then
-		SpellDamage(Target, DDType, math.random(MinDDVal, MaxDDVal))
-	else
-		SpellDamage(Target, DDType, MinDDVal)
-	end
+    -- Damage component
+    if MaxDmg ~= nil and MinDmg < MaxDmg then
+        dmgAmount = math.random(MinDmg, MaxDmg)
+        SpellDamage(Target, DmgType, dmgAmount)
+    end
 
-	-- Snare component
-	OriginalSpeed = GetSpeed(Target)
-	newSpeed = OriginalSpeed - (OriginalSpeed * (SnareAmount / 100))
+    -- Applies Touch of the Grey.  Lasts for 10.0 seconds.
+    CastSpell(Target, 3000, 1, Caster)
 
-	if OriginalSpeed > newSpeed then
-		SetSpeed(Target, newSpeed)
-	end
-
-end
-
-function tick(Caster, Target, DDType, MinDDVal, MaxDDVal, SnareAmount, DispelChance)
---[[
-	OriginalSpeed = GetSpeed(Target)
-	newSpeed = OriginalSpeed - (OriginalSpeed * (SnareAmount / 100))
-
-	if OriginalSpeed > newSpeed then
-		SetSpeed(Target, newSpeed)
-	end
---]]
-end
-
-function remove(Caster, Target)
---[[
-	SetSpeed(Target, OriginalSpeed)
---]]
 end

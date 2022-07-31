@@ -1,21 +1,22 @@
 --[[
-	Script Name	: Spells/Fighter/Warrior/Guardian/GutKick.lua
-	Script Purpose	: Generic damage + stun script
-	Script Author	: John Adams
-	Script Date	: 2008.12.04
+    Script Name    : Spells/Fighter/Warrior/Guardian/GutKick.lua
+    Script Author  : John Adams
+    Script Date    : 2013.11.22 07:11:41
+    Script Purpose : 
+                   : 
 --]]
 
 function cast(Caster, Target, DDType, MinDmg, MaxDmg)
-    -- DD component
+
+    -- Inflicts 13 - 22 crushing damage on target
     if MaxDmg ~= nil and MinDmg < MaxDmg then
 	SpellDamage(Target, DDType, math.random(MinDmg, MaxDmg))
-        -- Interrupt(Target)
     else
 	SpellDamage(Target, DDType, MinDmg)
-        -- Interrupt(Target)
     end
-end
 
-function remove(Caster, Target, DDType, MinDmg, MaxDmg)
-
+    -- Interrupts target
+    if target ~= nil then
+        Interrupt(Caster, Target)
+    end
 end

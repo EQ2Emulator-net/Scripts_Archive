@@ -8,7 +8,10 @@
 
 function cast(Caster, Target, MinHeal, MaxHeal)
 
-    healAmount = math.random(MinHeal, MaxHeal)
-    ModifyHP(Caster, healAmount)
+    if MaxHeal ~= nil and MinHeal < MaxHeal then
+      healAmount = math.random(MinHeal, MaxHeal)
+      ModifyHP(Target, healAmount)
+    end
 
 end
+

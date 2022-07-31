@@ -1,5 +1,5 @@
 --[[
-	Script Name	: Spells/mounts.lua
+	Script Name	: Spells/Commoner/BetaCarpet.lua
 	Script Purpose	: Spawns mounts of {model_id}, {color} and {speed}
 	Script Author	: John Adams / LethalEncounter
 	Script Date	: 2009.03.28

@@ -1,12 +1,11 @@
 --[[
-	Script Name	: Heal (Spell Type)
-	Script Purpose	: Generic script for healing spells
+	Script Name	: Spells/Priest/Druid/Fury/NaturesSalve.lua
 	Script Author	: John Adams
-	Script Date	: 2008.12.03
-	Script Note	: 
+	Script Date	: 2013.11.19
+	Script Purpose	: 
 --]]
 
-function cast(Caster, Target, HealType, HealMinVal, HealMaxVal)
+function cast(Caster, Target, HealMinVal, HealMaxVal)
 
 	-- Heal Component
 	if HealMinVal < HealMaxVal then

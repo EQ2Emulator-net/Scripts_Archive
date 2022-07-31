@@ -1,55 +1,38 @@
 --[[
-	Script Name	: dd_dot.lua
-	Script Purpose	: Generic damage + 1 effect script
-	Script Author	: John Adams
-	Script Date	: 2008.12.02
+    Script Name    : Spells/Fighter/Crusader/Shadowknight/Painbringer.lua
+    Script Author  : John Adams
+    Script Date    : 2013.11.17 05:11:19
+    Script Purpose : DD, DoT and Heal
+                   : 
 --]]
 
-function cast(Caster, Target, DDType, MinDDVal, MaxDDVal, EffectType, DamageType, MinEffectVal, MaxEffectVal)
+function cast(Caster, Target, DmgType, MinDmg, MaxDmg, MinHeal, DoTType, DoT)
 
-	-- DD component
-	if MaxDDVal ~= nil and MinDDVal < MaxDDVal then
-                dmgAmount = math.random(MinDDVal, MaxDDVal)
-		SpellDamage(Target, DDType, dmgAmount)
-                --AddHate(Caster, Target, dmgAmount)
-	else
-		SpellDamage(Target, DDType, MinDDVal)
-                --AddHate(Caster, Target, MinDDVal)
-	end
+  -- DD component
+  if MaxDmg ~= nil and MinDmg < MaxDmg then
+    dmgAmount = math.random(MinDmg, MaxDmg)
+    SpellDamage(Target, DDType, dmgAmount)
+  else
+    SpellDamage(Target, DDType, MinDmg)
+  end
 
-	-- Effect component - only process this code if there is an EffectType param
-	if EffectType ~= nil then
-
-		-- Determine if there is a range to effect values
-		if MaxEffectVal ~= nil and MinEffectVal < MaxEffectVal then
-			EffectValue = math.random(MinEffectVal, MaxEffectVal)
-		else
-			EffectValue = MinEffectVal
-		end
-
-		-- Determine EffectType - either a DamageType or a String value passed as param 4
-		if EffectType == "heal" then
-			ModifyHP(Caster, EffectValue)
-		else
-			SpellDamage(Target, DamageType, EffectValue)
-		end
-
-	end
+  -- Painbringer Component (instant heal)
+  if MinHeal ~= nil then
+    ModifyHP(Caster, MinHeal) -- heals 2 every 3 seconds for 9 seconds
+  end
 
 end
 
-function tick(Caster, Target, DDType, MinDDVal, MaxDDVal, EffectType, DamageType, MinEffectVal, MaxEffectVal)
+function tick(Caster, Target, DmgType, MinDmg, MaxDmg, MinHeal, DoTType, DoTAmt)
 
-	if MaxEffectVal ~= nil and MinEffectVal < MaxEffectVal then
-		EffectValue = math.random(MinEffectVal, MaxEffectVal)
-	else
-		EffectValue = MinEffectVal
-	end
+  -- Heal component
+  if MinHeal ~= nil then
+    ModifyHP(Caster, MinHeal) -- heals 2 every 3 seconds for 9 seconds
+  end
 
-	if EffectType == "heal" then
-		ModifyHP(Caster, EffectValue)
-	else
-		SpellDamage(Target, DamageType, EffectValue)
-	end
+  -- DoT component
+  if DoTAmt ~= nil then
+    SpellDamage(Target, DoTType, DoTAmt) -- Disease 1 every 3 seconds for 9 seconds
+  end
 
 end

@@ -5,22 +5,22 @@
 	Script Date	: 2008.12.07
 --]]
 
-function cast(Caster, Target, TauntType, MinTauntVal, MaxTauntVal)
+function cast(Caster, Target, MinTaunt1, MaxTaunt1, MinTaunt2, MaxTaunt2)
 	-- Taunt component
-	if MaxTauntVal ~= nil and MinTauntVal < MaxTauntVal then
-                hateAmount = math.random(MinTauntVal, MaxTauntVal)
+	if MaxTaunt1 ~= nil and MinTaunt1 < MaxTaunt1 then
+                hateAmount = math.random(MinTaunt1, MaxTaunt1)
                 AddHate(Caster, Target, hateAmount)
 	else
-                AddHate(Caster, Target, MinTauntVal)
+                AddHate(Caster, Target, MinTaunt1)
 	end
 end
 
-function tick(Caster, Target, TauntType, MinTauntVal, MaxTauntVal)
-	if MaxTauntVal ~= nil and MinTauntVal < MaxTauntVal then
-                hateAmount = math.random(MinTauntVal, MaxTauntVal)
+function tick(Caster, Target, MinTaunt1, MaxTaunt1, MinTaunt2, MaxTaunt2)
+	if MaxTaunt2 ~= nil and MinTaunt2 < MaxTaunt2 then
+                hateAmount = math.random(MinTaunt2, MaxTaunt2)
 		AddHate(Caster, Target, hateAmount)
 	else
-		AddHate(Caster, Target, MinTauntVal)
+		AddHate(Caster, Target, MinTaunt2)
 	end
 end
 

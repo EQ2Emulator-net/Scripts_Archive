@@ -1,26 +1,21 @@
 --[[
-    Script Name	   : Provoke.lua
-    Script Purpose : Taunt script
+    Script Name    : Spells/Fighter/Warrior/Guardian/Provoke.lua
     Script Author  : John Adams
-    Script Date	   : 2008.12.07
+    Script Date    : 2013.11.22 12:11:28
+    Script Purpose : 
+                   : 
 --]]
 
 function cast(Caster, Target, MinTaunt, MaxTaunt)
-    -- Taunt component
+    -- Increases Threat to target by 51 - 62 
     if MaxTaunt ~= nil and MinTaunt < MaxTaunt then
-        hateAmount = math.random(MinTaunt, MaxTaunt)
-        AddHate(Caster, Target, hateAmount)
-        --Interrupt(Target)
+        AddHate(Caster, Target, math.random(MinTaunt, MaxTaunt))
     else
         AddHate(Caster, Target, MinTaunt)
-        --Interrupt(Target)
     end
-end
 
-function tick(Caster, Target, MinTaunt, MaxTaunt)
-
-end
-
-function remove(Caster, Target, MinTaunt, MaxTaunt)
-
+    -- Interrupts target
+    if target ~= nil then
+        Interrupt(Caster, Target)
+    end
 end

@@ -1,5 +1,5 @@
 --[[
-	Script Name	: betaheal.lua
+	Script Name	: Spells/Commoner/BetaHeal.lua
 	Script Purpose	: Fast / High healing for Beta testers
 	Script Author	: John Adams
 	Script Date	: 2008.12.03
